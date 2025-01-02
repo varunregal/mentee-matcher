@@ -27,6 +27,8 @@ const MentorPreHealthForm = () => {
       specialty: "",
       yearsOfExperience: "",
       currentRole: "",
+      country: "",
+      state: "",
     },
     stepTwo: {
       experience: "",
