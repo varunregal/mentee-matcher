@@ -18,9 +18,11 @@ export const stepThreeSchema = z.object({
   expectations: z.string().min(10, "Please provide more detail about your expectations"),
 });
 
+type StepThreeData = z.infer<typeof stepThreeSchema>;
+
 interface StepThreeProps {
-  form: UseFormReturn<z.infer<typeof stepThreeSchema>>;
-  onSubmit: (data: z.infer<typeof stepThreeSchema>) => void;
+  form: UseFormReturn<StepThreeData>;
+  onSubmit: (data: StepThreeData) => void;
   onPrevious: () => void;
 }
 

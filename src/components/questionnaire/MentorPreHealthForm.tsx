@@ -6,12 +6,17 @@ import { Stepper } from "@/components/ui/stepper-2";
 import StepOne, { stepOneSchema } from "./mentor-prehealth/StepOne";
 import StepTwo, { stepTwoSchema } from "./mentor-prehealth/StepTwo";
 import StepThree, { stepThreeSchema } from "./mentor-prehealth/StepThree";
+import { z } from "zod";
+
+type StepOneData = z.infer<typeof stepOneSchema>;
+type StepTwoData = z.infer<typeof stepTwoSchema>;
+type StepThreeData = z.infer<typeof stepThreeSchema>;
 
 const MentorPreHealthForm = () => {
   const [step, setStep] = useState(1);
   const { toast } = useToast();
   
-  const stepOneForm = useForm({
+  const stepOneForm = useForm<StepOneData>({
     resolver: zodResolver(stepOneSchema),
     defaultValues: {
       specialty: "",
@@ -20,7 +25,7 @@ const MentorPreHealthForm = () => {
     },
   });
 
-  const stepTwoForm = useForm({
+  const stepTwoForm = useForm<StepTwoData>({
     resolver: zodResolver(stepTwoSchema),
     defaultValues: {
       experience: "",
@@ -29,7 +34,7 @@ const MentorPreHealthForm = () => {
     },
   });
 
-  const stepThreeForm = useForm({
+  const stepThreeForm = useForm<StepThreeData>({
     resolver: zodResolver(stepThreeSchema),
     defaultValues: {
       availability: "",
@@ -38,17 +43,17 @@ const MentorPreHealthForm = () => {
     },
   });
 
-  const onSubmitStepOne = async (data: any) => {
+  const onSubmitStepOne = async (data: StepOneData) => {
     console.log("Step 1 data:", data);
     setStep(2);
   };
 
-  const onSubmitStepTwo = async (data: any) => {
+  const onSubmitStepTwo = async (data: StepTwoData) => {
     console.log("Step 2 data:", data);
     setStep(3);
   };
 
-  const onSubmitStepThree = async (data: any) => {
+  const onSubmitStepThree = async (data: StepThreeData) => {
     console.log("Step 3 data:", data);
     toast({
       title: "Questionnaire submitted",

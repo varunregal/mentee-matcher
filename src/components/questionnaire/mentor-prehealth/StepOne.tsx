@@ -17,9 +17,11 @@ export const stepOneSchema = z.object({
   currentRole: z.string().min(2, "Current role must be at least 2 characters"),
 });
 
+type StepOneData = z.infer<typeof stepOneSchema>;
+
 interface StepOneProps {
-  form: UseFormReturn<z.infer<typeof stepOneSchema>>;
-  onNext: (data: z.infer<typeof stepOneSchema>) => void;
+  form: UseFormReturn<StepOneData>;
+  onNext: (data: StepOneData) => void;
 }
 
 const StepOne = ({ form, onNext }: StepOneProps) => {

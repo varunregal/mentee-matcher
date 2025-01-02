@@ -17,9 +17,11 @@ export const stepTwoSchema = z.object({
   challenges: z.string().min(10, "Please share challenges you've overcome"),
 });
 
+type StepTwoData = z.infer<typeof stepTwoSchema>;
+
 interface StepTwoProps {
-  form: UseFormReturn<z.infer<typeof stepTwoSchema>>;
-  onNext: (data: z.infer<typeof stepTwoSchema>) => void;
+  form: UseFormReturn<StepTwoData>;
+  onNext: (data: StepTwoData) => void;
   onPrevious: () => void;
 }
 
