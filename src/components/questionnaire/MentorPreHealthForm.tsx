@@ -6,6 +6,7 @@ import { Stepper } from "@/components/ui/stepper-2";
 import StepOne, { stepOneSchema } from "./mentor-prehealth/StepOne";
 import StepTwo, { stepTwoSchema } from "./mentor-prehealth/StepTwo";
 import StepThree, { stepThreeSchema } from "./mentor-prehealth/StepThree";
+import StepReview from "./mentor-prehealth/StepReview";
 import { z } from "zod";
 
 type StepOneData = z.infer<typeof stepOneSchema>;
@@ -15,6 +16,11 @@ type StepThreeData = z.infer<typeof stepThreeSchema>;
 const MentorPreHealthForm = () => {
   const [step, setStep] = useState(1);
   const { toast } = useToast();
+  const [formData, setFormData] = useState({
+    stepOne: {} as StepOneData,
+    stepTwo: {} as StepTwoData,
+    stepThree: {} as StepThreeData,
+  });
   
   const stepOneForm = useForm<StepOneData>({
     resolver: zodResolver(stepOneSchema),
@@ -44,27 +50,36 @@ const MentorPreHealthForm = () => {
   });
 
   const onSubmitStepOne = async (data: StepOneData) => {
-    console.log("Step 1 data:", data);
+    setFormData(prev => ({ ...prev, stepOne: data }));
     setStep(2);
   };
 
   const onSubmitStepTwo = async (data: StepTwoData) => {
-    console.log("Step 2 data:", data);
+    setFormData(prev => ({ ...prev, stepTwo: data }));
     setStep(3);
   };
 
   const onSubmitStepThree = async (data: StepThreeData) => {
-    console.log("Step 3 data:", data);
+    setFormData(prev => ({ ...prev, stepThree: data }));
+    setStep(4);
+  };
+
+  const handleFinalSubmit = async () => {
+    console.log("Final form data:", formData);
     toast({
       title: "Questionnaire submitted",
       description: "Thank you for completing the questionnaire!",
     });
   };
 
+  const handleEdit = (stepNumber: number) => {
+    setStep(stepNumber);
+  };
+
   return (
-    <div className="space-y-8">
+    <div className="max-w-3xl mx-auto py-8 px-4">
       <div className="flex justify-center mb-12">
-        <Stepper currentStep={step} steps={3} />
+        <Stepper currentStep={step} steps={4} />
       </div>
       
       {step === 1 && (
@@ -87,6 +102,15 @@ const MentorPreHealthForm = () => {
           form={stepThreeForm}
           onSubmit={onSubmitStepThree}
           onPrevious={() => setStep(2)}
+        />
+      )}
+
+      {step === 4 && (
+        <StepReview
+          data={formData}
+          onSubmit={handleFinalSubmit}
+          onEdit={handleEdit}
+          onPrevious={() => setStep(3)}
         />
       )}
     </div>
