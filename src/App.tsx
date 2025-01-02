@@ -7,10 +7,8 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import ForgotPassword from "./pages/ForgotPassword";
 import Home from "./pages/Home";
-import About from "./pages/About";
-import Features from "./pages/Features";
-import Contact from "./pages/Contact";
 import Navbar from "./components/Navbar";
+import Questionnaire from "./pages/Questionnaire";
 
 const queryClient = new QueryClient();
 
@@ -26,9 +24,7 @@ const App = () => (
           <Route path="/signup" element={<SignUp />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/home" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/features" element={<Features />} />
-          <Route path="/contact" element={<Contact />} />
+          <Route path="/questionnaire" element={<Questionnaire />} />
           <Route path="/" element={<Navigate to="/home" replace />} />
         </Routes>
       </BrowserRouter>

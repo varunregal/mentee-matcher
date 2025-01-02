@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
+import { useNavigate } from "react-router-dom";
 import {
   Form,
   FormControl,
@@ -17,6 +18,7 @@ import { SignUpSchema } from "@/lib/validations/auth";
 type FormData = z.infer<typeof SignUpSchema>;
 
 export function SignUpForm() {
+  const navigate = useNavigate();
   const form = useForm<FormData>({
     resolver: zodResolver(SignUpSchema),
     defaultValues: {
@@ -31,6 +33,8 @@ export function SignUpForm() {
 
   const onSubmit = async (data: FormData) => {
     console.log(data);
+    // Navigate to questionnaire with user data
+    navigate("/questionnaire", { state: data });
   };
 
   return (
