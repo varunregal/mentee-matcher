@@ -1,5 +1,4 @@
 import { useLocation, Navigate } from "react-router-dom";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import MentorPreHealthForm from "@/components/questionnaire/MentorPreHealthForm";
 import MentorGraduateForm from "@/components/questionnaire/MentorGraduateForm";
 import MenteePreHealthForm from "@/components/questionnaire/MenteePreHealthForm";
@@ -31,18 +30,20 @@ const Questionnaire = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-violet-50 py-12 px-4">
-      <Card className="max-w-3xl mx-auto">
-        <CardHeader>
-          <CardTitle className="text-2xl font-bold text-center">
-            {userData.role === "mentor" ? "Mentor" : "Mentee"} Questionnaire - {" "}
-            {userData.category === "pre-health" ? "Pre-health" : "Graduate"}
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
+    <div className="min-h-screen bg-gradient-to-br from-[#9b87f5] via-[#7E69AB] to-[#6E59A5] py-12 px-4">
+      <div className="max-w-3xl mx-auto space-y-8">
+        <div className="text-center space-y-2">
+          <h1 className="text-3xl font-bold text-white">
+            {userData.role === "mentor" ? "Mentor" : "Mentee"} Questionnaire
+          </h1>
+          <p className="text-purple-100">
+            {userData.category === "pre-health" ? "Pre-health" : "Graduate"} Program
+          </p>
+        </div>
+        <div className="bg-white/10 backdrop-blur-lg rounded-xl p-8 shadow-xl">
           {getQuestionnaireForm()}
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 };
