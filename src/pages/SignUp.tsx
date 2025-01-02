@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Checkbox } from "@/components/ui/checkbox";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { AuthLayout } from "@/components/auth/AuthLayout";
-import { useToast } from "@/components/ui/use-toast";
+import { useToast } from "@/hooks/use-toast";
 
 export default function SignUp() {
   const [isLoading, setIsLoading] = useState(false);
@@ -37,18 +37,33 @@ export default function SignUp() {
         onSubmit={onSubmit}
         className="space-y-6"
       >
-        <div className="space-y-2">
-          <Label htmlFor="name">Name</Label>
-          <Input
-            id="name"
-            placeholder="John Doe"
-            type="text"
-            autoCapitalize="none"
-            autoCorrect="off"
-            disabled={isLoading}
-            required
-            className="glass-input"
-          />
+        <div className="grid grid-cols-2 gap-4">
+          <div className="space-y-2">
+            <Label htmlFor="firstName">First Name</Label>
+            <Input
+              id="firstName"
+              placeholder="John"
+              type="text"
+              autoCapitalize="none"
+              autoCorrect="off"
+              disabled={isLoading}
+              required
+              className="glass-input"
+            />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="lastName">Last Name</Label>
+            <Input
+              id="lastName"
+              placeholder="Doe"
+              type="text"
+              autoCapitalize="none"
+              autoCorrect="off"
+              disabled={isLoading}
+              required
+              className="glass-input"
+            />
+          </div>
         </div>
         <div className="space-y-2">
           <Label htmlFor="email">Email</Label>
@@ -74,20 +89,31 @@ export default function SignUp() {
             className="glass-input"
           />
         </div>
-        <div className="flex items-center space-x-2">
-          <Checkbox id="terms" required />
-          <label
-            htmlFor="terms"
-            className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-          >
-            I agree to the{" "}
-            <Link
-              to="/terms"
-              className="text-primary hover:opacity-80 transition-opacity"
-            >
-              terms and conditions
-            </Link>
-          </label>
+        <div className="space-y-2">
+          <Label>Role</Label>
+          <RadioGroup defaultValue="mentee" className="flex space-x-4">
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="mentor" id="mentor" />
+              <Label htmlFor="mentor">Mentor</Label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="mentee" id="mentee" />
+              <Label htmlFor="mentee">Mentee</Label>
+            </div>
+          </RadioGroup>
+        </div>
+        <div className="space-y-2">
+          <Label>Category</Label>
+          <RadioGroup defaultValue="pre-health" className="flex space-x-4">
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="pre-health" id="pre-health" />
+              <Label htmlFor="pre-health">Pre-health</Label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="graduate" id="graduate" />
+              <Label htmlFor="graduate">Graduate</Label>
+            </div>
+          </RadioGroup>
         </div>
         <Button
           type="submit"
