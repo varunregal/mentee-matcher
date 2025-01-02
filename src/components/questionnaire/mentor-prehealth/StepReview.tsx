@@ -1,12 +1,5 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { Card } from "@/components/ui/card";
 
 interface ReviewData {
   stepOne: {
@@ -36,107 +29,95 @@ interface StepReviewProps {
 const StepReview = ({ data, onSubmit, onEdit, onPrevious }: StepReviewProps) => {
   return (
     <div className="space-y-6 max-w-2xl mx-auto">
-      <ScrollArea className="h-[60vh] pr-4">
-        <div className="space-y-6">
-          <Card>
-            <CardHeader>
-              <CardTitle>Professional Information</CardTitle>
-              <CardDescription>
-                <Button
-                  variant="link"
-                  onClick={() => onEdit(1)}
-                  className="p-0 h-auto font-normal text-blue-500"
-                >
-                  Edit this section
-                </Button>
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div>
-                <h4 className="font-semibold">Specialty</h4>
-                <p className="text-gray-600">{data.stepOne.specialty}</p>
-              </div>
-              <div>
-                <h4 className="font-semibold">Years of Experience</h4>
-                <p className="text-gray-600">{data.stepOne.yearsOfExperience}</p>
-              </div>
-              <div>
-                <h4 className="font-semibold">Current Role</h4>
-                <p className="text-gray-600">{data.stepOne.currentRole}</p>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle>Experience & Achievements</CardTitle>
-              <CardDescription>
-                <Button
-                  variant="link"
-                  onClick={() => onEdit(2)}
-                  className="p-0 h-auto font-normal text-blue-500"
-                >
-                  Edit this section
-                </Button>
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div>
-                <h4 className="font-semibold">Experience</h4>
-                <p className="text-gray-600">{data.stepTwo.experience}</p>
-              </div>
-              <div>
-                <h4 className="font-semibold">Achievements</h4>
-                <p className="text-gray-600">{data.stepTwo.achievements}</p>
-              </div>
-              <div>
-                <h4 className="font-semibold">Challenges Overcome</h4>
-                <p className="text-gray-600">{data.stepTwo.challenges}</p>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle>Mentorship Details</CardTitle>
-              <CardDescription>
-                <Button
-                  variant="link"
-                  onClick={() => onEdit(3)}
-                  className="p-0 h-auto font-normal text-blue-500"
-                >
-                  Edit this section
-                </Button>
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div>
-                <h4 className="font-semibold">Availability</h4>
-                <p className="text-gray-600">{data.stepThree.availability}</p>
-              </div>
-              <div>
-                <h4 className="font-semibold">Mentorship Style</h4>
-                <p className="text-gray-600">{data.stepThree.mentorshipStyle}</p>
-              </div>
-              <div>
-                <h4 className="font-semibold">Expectations from Mentees</h4>
-                <p className="text-gray-600">{data.stepThree.expectations}</p>
-              </div>
-            </CardContent>
-          </Card>
+      <Card className="p-6 space-y-4">
+        <div className="space-y-2">
+          <h3 className="text-lg font-semibold text-gray-900">Professional Information</h3>
+          <div className="grid gap-2">
+            <div>
+              <span className="text-sm font-medium text-gray-600">Specialty:</span>
+              <p className="text-gray-900">{data.stepOne.specialty}</p>
+            </div>
+            <div>
+              <span className="text-sm font-medium text-gray-600">Years of Experience:</span>
+              <p className="text-gray-900">{data.stepOne.yearsOfExperience}</p>
+            </div>
+            <div>
+              <span className="text-sm font-medium text-gray-600">Current Role:</span>
+              <p className="text-gray-900">{data.stepOne.currentRole}</p>
+            </div>
+          </div>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => onEdit(1)}
+            className="mt-2"
+          >
+            Edit
+          </Button>
         </div>
-      </ScrollArea>
+      </Card>
 
-      <div className="flex gap-4">
-        <Button
-          type="button"
-          variant="outline"
-          onClick={onPrevious}
-          className="flex-1"
-        >
+      <Card className="p-6 space-y-4">
+        <div className="space-y-2">
+          <h3 className="text-lg font-semibold text-gray-900">Experience & Achievements</h3>
+          <div className="grid gap-2">
+            <div>
+              <span className="text-sm font-medium text-gray-600">Experience:</span>
+              <p className="text-gray-900">{data.stepTwo.experience}</p>
+            </div>
+            <div>
+              <span className="text-sm font-medium text-gray-600">Achievements:</span>
+              <p className="text-gray-900">{data.stepTwo.achievements}</p>
+            </div>
+            <div>
+              <span className="text-sm font-medium text-gray-600">Challenges:</span>
+              <p className="text-gray-900">{data.stepTwo.challenges}</p>
+            </div>
+          </div>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => onEdit(2)}
+            className="mt-2"
+          >
+            Edit
+          </Button>
+        </div>
+      </Card>
+
+      <Card className="p-6 space-y-4">
+        <div className="space-y-2">
+          <h3 className="text-lg font-semibold text-gray-900">Mentorship Details</h3>
+          <div className="grid gap-2">
+            <div>
+              <span className="text-sm font-medium text-gray-600">Availability:</span>
+              <p className="text-gray-900">{data.stepThree.availability}</p>
+            </div>
+            <div>
+              <span className="text-sm font-medium text-gray-600">Mentorship Style:</span>
+              <p className="text-gray-900">{data.stepThree.mentorshipStyle}</p>
+            </div>
+            <div>
+              <span className="text-sm font-medium text-gray-600">Expectations:</span>
+              <p className="text-gray-900">{data.stepThree.expectations}</p>
+            </div>
+          </div>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => onEdit(3)}
+            className="mt-2"
+          >
+            Edit
+          </Button>
+        </div>
+      </Card>
+
+      <div className="flex gap-4 justify-between mt-8">
+        <Button variant="outline" onClick={onPrevious}>
           Previous
         </Button>
-        <Button type="button" onClick={onSubmit} className="flex-1">
+        <Button onClick={onSubmit}>
           Submit Application
         </Button>
       </div>

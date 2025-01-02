@@ -8,9 +8,10 @@ interface AuthLayoutProps {
 
 export function AuthLayout({ children, title, subtitle }: AuthLayoutProps) {
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-gray-50 to-gray-100">
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute inset-0 bg-grid-black/[0.02] bg-[size:20px_20px]" />
+    <div className="min-h-screen flex items-center justify-center p-4 bg-white">
+      <div className="absolute inset-0">
+        <div className="absolute inset-y-0 right-0 w-1/2 bg-gradient-to-r from-blue-50 to-blue-100 opacity-50" />
+        <div className="absolute inset-y-0 left-0 w-1/2 bg-gradient-to-l from-indigo-50 to-indigo-100 opacity-50" />
       </div>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -19,11 +20,14 @@ export function AuthLayout({ children, title, subtitle }: AuthLayoutProps) {
         className="w-full max-w-md z-10"
       >
         <div className="auth-card">
-          <div className="mb-8 text-center">
-            <h1 className="text-2xl font-semibold tracking-tight mb-2">{title}</h1>
-            <p className="text-sm text-muted-foreground">{subtitle}</p>
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-50 opacity-50" />
+          <div className="relative">
+            <div className="mb-8 text-center">
+              <h1 className="text-2xl font-semibold tracking-tight mb-2 text-gray-900">{title}</h1>
+              <p className="text-sm text-gray-600">{subtitle}</p>
+            </div>
+            {children}
           </div>
-          {children}
         </div>
       </motion.div>
     </div>

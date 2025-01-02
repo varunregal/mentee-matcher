@@ -13,40 +13,46 @@ type StepOneData = z.infer<typeof stepOneSchema>;
 type StepTwoData = z.infer<typeof stepTwoSchema>;
 type StepThreeData = z.infer<typeof stepThreeSchema>;
 
+interface FormData {
+  stepOne: StepOneData;
+  stepTwo: StepTwoData;
+  stepThree: StepThreeData;
+}
+
 const MentorPreHealthForm = () => {
   const [step, setStep] = useState(1);
   const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    stepOne: {} as StepOneData,
-    stepTwo: {} as StepTwoData,
-    stepThree: {} as StepThreeData,
-  });
-  
-  const stepOneForm = useForm<StepOneData>({
-    resolver: zodResolver(stepOneSchema),
-    defaultValues: {
+  const [formData, setFormData] = useState<FormData>({
+    stepOne: {
       specialty: "",
       yearsOfExperience: "",
       currentRole: "",
     },
-  });
-
-  const stepTwoForm = useForm<StepTwoData>({
-    resolver: zodResolver(stepTwoSchema),
-    defaultValues: {
+    stepTwo: {
       experience: "",
       achievements: "",
       challenges: "",
     },
-  });
-
-  const stepThreeForm = useForm<StepThreeData>({
-    resolver: zodResolver(stepThreeSchema),
-    defaultValues: {
+    stepThree: {
       availability: "",
       mentorshipStyle: "",
       expectations: "",
     },
+  });
+  
+  const stepOneForm = useForm<StepOneData>({
+    resolver: zodResolver(stepOneSchema),
+    defaultValues: formData.stepOne,
+  });
+
+  const stepTwoForm = useForm<StepTwoData>({
+    resolver: zodResolver(stepTwoSchema),
+    defaultValues: formData.stepTwo,
+  });
+
+  const stepThreeForm = useForm<StepThreeData>({
+    resolver: zodResolver(stepThreeSchema),
+    defaultValues: formData.stepThree,
   });
 
   const onSubmitStepOne = async (data: StepOneData) => {
