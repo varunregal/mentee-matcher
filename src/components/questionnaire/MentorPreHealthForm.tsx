@@ -14,9 +14,9 @@ type StepTwoData = z.infer<typeof stepTwoSchema>;
 type StepThreeData = z.infer<typeof stepThreeSchema>;
 
 interface FormData {
-  stepOne: StepOneData;
-  stepTwo: StepTwoData;
-  stepThree: StepThreeData;
+  stepOne: Required<StepOneData>;
+  stepTwo: Required<StepTwoData>;
+  stepThree: Required<StepThreeData>;
 }
 
 const MentorPreHealthForm = () => {
@@ -56,17 +56,17 @@ const MentorPreHealthForm = () => {
   });
 
   const onSubmitStepOne = async (data: StepOneData) => {
-    setFormData(prev => ({ ...prev, stepOne: data }));
+    setFormData(prev => ({ ...prev, stepOne: data as Required<StepOneData> }));
     setStep(2);
   };
 
   const onSubmitStepTwo = async (data: StepTwoData) => {
-    setFormData(prev => ({ ...prev, stepTwo: data }));
+    setFormData(prev => ({ ...prev, stepTwo: data as Required<StepTwoData> }));
     setStep(3);
   };
 
   const onSubmitStepThree = async (data: StepThreeData) => {
-    setFormData(prev => ({ ...prev, stepThree: data }));
+    setFormData(prev => ({ ...prev, stepThree: data as Required<StepThreeData> }));
     setStep(4);
   };
 
