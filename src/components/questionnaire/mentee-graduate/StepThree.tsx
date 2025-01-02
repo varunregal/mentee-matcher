@@ -34,7 +34,7 @@ const StepThree = ({ form, onNext, onPrevious }: StepThreeProps) => {
             <FormItem>
               <FormLabel>What challenges are you facing in your graduate journey?</FormLabel>
               <FormControl>
-                <Textarea {...field} className="glass-input min-h-[100px]" />
+                <Textarea {...field} className="bg-white min-h-[100px]" />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -49,7 +49,7 @@ const StepThree = ({ form, onNext, onPrevious }: StepThreeProps) => {
           >
             Previous
           </Button>
-          <Button type="submit" className="w-32 text-white">
+          <Button type="submit" className="w-32">
             Next Step
           </Button>
         </div>

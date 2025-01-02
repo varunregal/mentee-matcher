@@ -34,7 +34,7 @@ const StepTwo = ({ form, onNext, onPrevious }: StepTwoProps) => {
             <FormItem>
               <FormLabel>What are your research interests?</FormLabel>
               <FormControl>
-                <Textarea {...field} className="glass-input min-h-[100px]" />
+                <Textarea {...field} className="bg-white min-h-[100px]" />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -49,7 +49,7 @@ const StepTwo = ({ form, onNext, onPrevious }: StepTwoProps) => {
           >
             Previous
           </Button>
-          <Button type="submit" className="w-32 text-white">
+          <Button type="submit" className="w-32">
             Next Step
           </Button>
         </div>

@@ -33,13 +33,13 @@ const StepOne = ({ form, onNext }: StepOneProps) => {
             <FormItem>
               <FormLabel>What graduate program are you interested in?</FormLabel>
               <FormControl>
-                <Input {...field} className="glass-input" placeholder="e.g., PhD in Biomedical Sciences" />
+                <Input {...field} className="bg-white" placeholder="e.g., PhD in Computer Science" />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-        <Button type="submit" className="w-full text-white">
+        <Button type="submit" className="w-full">
           Next Step
         </Button>
       </form>

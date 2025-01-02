@@ -34,7 +34,7 @@ const StepFour = ({ form, onSubmit, onPrevious }: StepFourProps) => {
             <FormItem>
               <FormLabel>What kind of mentoring support are you looking for?</FormLabel>
               <FormControl>
-                <Textarea {...field} className="glass-input min-h-[100px]" />
+                <Textarea {...field} className="bg-white min-h-[100px]" />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -49,7 +49,7 @@ const StepFour = ({ form, onSubmit, onPrevious }: StepFourProps) => {
           >
             Previous
           </Button>
-          <Button type="submit" className="w-48 text-white">
+          <Button type="submit" className="w-48">
             Submit Questionnaire
           </Button>
         </div>
