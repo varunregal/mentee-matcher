@@ -1,4 +1,3 @@
-import { cn } from "@/lib/utils";
 import { Check } from "lucide-react";
 
 interface StepperProps {
@@ -6,37 +5,35 @@ interface StepperProps {
   steps: number;
 }
 
-export function Stepper({ currentStep, steps }: StepperProps) {
+export const Stepper = ({ currentStep, steps }: StepperProps) => {
   return (
     <div className="flex items-center space-x-2">
       {Array.from({ length: steps }, (_, i) => i + 1).map((step) => (
         <div key={step} className="flex items-center">
           <div
-            className={cn(
-              "h-10 w-10 rounded-full border-2 flex items-center justify-center transition-all duration-200",
+            className={`w-8 h-8 rounded-full flex items-center justify-center ${
               step === currentStep
-                ? "border-primary bg-primary text-primary-foreground"
+                ? "bg-primary text-white"
                 : step < currentStep
-                ? "border-primary bg-primary text-primary-foreground"
-                : "border-muted-foreground/25"
-            )}
+                ? "bg-primary/20 text-primary"
+                : "bg-gray-200 text-gray-400"
+            }`}
           >
             {step < currentStep ? (
-              <Check className="h-5 w-5" />
+              <Check className="w-5 h-5" />
             ) : (
-              <span className="text-sm font-medium">{step}</span>
+              <span>{step}</span>
             )}
           </div>
-          {step !== steps && (
+          {step < steps && (
             <div
-              className={cn(
-                "h-[2px] w-16 mx-2",
-                step < currentStep ? "bg-primary" : "bg-muted-foreground/25"
-              )}
+              className={`w-12 h-1 mx-2 ${
+                step < currentStep ? "bg-primary" : "bg-gray-200"
+              }`}
             />
           )}
         </div>
       ))}
     </div>
   );
-}
+};

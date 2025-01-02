@@ -80,7 +80,7 @@ const StepTwo = ({ form, onNext, onPrevious }: StepTwoProps) => {
           >
             Previous
           </Button>
-          <Button type="submit" className="w-32 bg-primary hover:bg-primary-dark">
+          <Button type="submit" className="w-32 bg-primary text-white hover:bg-primary/90">
             Next Step
           </Button>
         </div>

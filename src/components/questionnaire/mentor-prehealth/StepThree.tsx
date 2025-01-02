@@ -85,7 +85,7 @@ const StepThree = ({ form, onSubmit, onPrevious }: StepThreeProps) => {
           >
             Previous
           </Button>
-          <Button type="submit" className="w-32 bg-primary hover:bg-primary-dark">
+          <Button type="submit" className="w-32 bg-primary text-white hover:bg-primary/90">
             Submit
           </Button>
         </div>

@@ -32,7 +32,7 @@ interface StepReviewProps {
 const StepReview = ({ data, onSubmit, onEdit, onPrevious }: StepReviewProps) => {
   return (
     <div className="space-y-6 max-w-2xl mx-auto">
-      <Card className="p-6 space-y-4 bg-gradient-to-br from-primary-light/10 to-white border-primary/20">
+      <Card className="p-6 space-y-4 border-primary/20">
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <h3 className="text-lg font-semibold text-primary-dark">Professional Information</h3>
@@ -70,7 +70,7 @@ const StepReview = ({ data, onSubmit, onEdit, onPrevious }: StepReviewProps) => 
         </div>
       </Card>
 
-      <Card className="p-6 space-y-4 bg-gradient-to-br from-primary-light/10 to-white border-primary/20">
+      <Card className="p-6 space-y-4 border-primary/20">
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <h3 className="text-lg font-semibold text-primary-dark">Experience & Achievements</h3>
@@ -101,7 +101,7 @@ const StepReview = ({ data, onSubmit, onEdit, onPrevious }: StepReviewProps) => 
         </div>
       </Card>
 
-      <Card className="p-6 space-y-4 bg-gradient-to-br from-primary-light/10 to-white border-primary/20">
+      <Card className="p-6 space-y-4 border-primary/20">
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <h3 className="text-lg font-semibold text-primary-dark">Mentorship Details</h3>
@@ -136,7 +136,7 @@ const StepReview = ({ data, onSubmit, onEdit, onPrevious }: StepReviewProps) => 
         <Button variant="outline" onClick={onPrevious} className="w-32">
           Previous
         </Button>
-        <Button onClick={onSubmit} className="w-48 bg-primary hover:bg-primary-dark">
+        <Button onClick={onSubmit} className="w-48 bg-primary text-white hover:bg-primary/90">
           <CheckCircle2 className="w-4 h-4 mr-2" />
           Submit Application
         </Button>
