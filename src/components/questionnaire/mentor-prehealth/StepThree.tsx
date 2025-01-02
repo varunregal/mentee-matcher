@@ -29,7 +29,7 @@ interface StepThreeProps {
 const StepThree = ({ form, onSubmit, onPrevious }: StepThreeProps) => {
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 max-w-xl mx-auto">
         <FormField
           control={form.control}
           name="availability"
@@ -39,7 +39,7 @@ const StepThree = ({ form, onSubmit, onPrevious }: StepThreeProps) => {
               <FormControl>
                 <Input
                   {...field}
-                  className="max-w-md"
+                  className="bg-white"
                   placeholder="e.g., Weekends, Evening hours"
                 />
               </FormControl>
@@ -55,7 +55,7 @@ const StepThree = ({ form, onSubmit, onPrevious }: StepThreeProps) => {
             <FormItem>
               <FormLabel className="text-gray-900">How would you describe your mentorship style?</FormLabel>
               <FormControl>
-                <Textarea {...field} className="max-w-md min-h-[100px]" />
+                <Textarea {...field} className="min-h-[100px] bg-white" />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -69,23 +69,23 @@ const StepThree = ({ form, onSubmit, onPrevious }: StepThreeProps) => {
             <FormItem>
               <FormLabel className="text-gray-900">What are your expectations from mentees?</FormLabel>
               <FormControl>
-                <Textarea {...field} className="max-w-md min-h-[100px]" />
+                <Textarea {...field} className="min-h-[100px] bg-white" />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
 
-        <div className="flex gap-4 max-w-md">
+        <div className="flex gap-4 justify-center mt-8">
           <Button
             type="button"
             variant="outline"
             onClick={onPrevious}
-            className="flex-1"
+            className="w-32"
           >
             Previous
           </Button>
-          <Button type="submit" className="flex-1">
+          <Button type="submit" className="w-32 bg-primary hover:bg-primary-dark">
             Submit
           </Button>
         </div>
