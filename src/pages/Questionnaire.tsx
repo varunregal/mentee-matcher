@@ -30,7 +30,7 @@ const Questionnaire = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen">
       <div className="max-w-3xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <div className="space-y-8">
           <div className="text-center">
