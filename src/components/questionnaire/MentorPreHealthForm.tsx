@@ -84,7 +84,7 @@ const MentorPreHealthForm = () => {
   };
 
   return (
-    <div className="space-y-8 animate-fadeIn">
+    <div className="space-y-8">
       <Stepper currentStep={step} steps={3} />
       
       {step === 1 && (
@@ -95,9 +95,9 @@ const MentorPreHealthForm = () => {
               name="specialty"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-white">What is your medical specialty?</FormLabel>
+                  <FormLabel>What is your medical specialty?</FormLabel>
                   <FormControl>
-                    <Input {...field} className="glass-input" />
+                    <Input {...field} className="w-full" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -134,7 +134,7 @@ const MentorPreHealthForm = () => {
 
             <Button 
               type="submit" 
-              className="w-full bg-white/20 hover:bg-white/30 text-white border border-white/20"
+              className="w-full"
             >
               Next Step
             </Button>
@@ -192,13 +192,13 @@ const MentorPreHealthForm = () => {
                 type="button"
                 variant="outline"
                 onClick={() => setStep(1)}
-                className="w-full bg-white/10 hover:bg-white/20 text-white border border-white/20"
+                className="w-full"
               >
                 Previous
               </Button>
               <Button
                 type="submit"
-                className="w-full bg-white/20 hover:bg-white/30 text-white border border-white/20"
+                className="w-full"
               >
                 Next Step
               </Button>
@@ -261,13 +261,13 @@ const MentorPreHealthForm = () => {
                 type="button"
                 variant="outline"
                 onClick={() => setStep(2)}
-                className="w-full bg-white/10 hover:bg-white/20 text-white border border-white/20"
+                className="w-full"
               >
                 Previous
               </Button>
               <Button
                 type="submit"
-                className="w-full bg-white/20 hover:bg-white/30 text-white border border-white/20"
+                className="w-full"
               >
                 Submit
               </Button>

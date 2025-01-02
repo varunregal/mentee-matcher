@@ -30,18 +30,21 @@ const Questionnaire = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#9b87f5] via-[#7E69AB] to-[#6E59A5] py-12 px-4">
-      <div className="max-w-3xl mx-auto space-y-8">
-        <div className="text-center space-y-2">
-          <h1 className="text-3xl font-bold text-white">
-            {userData.role === "mentor" ? "Mentor" : "Mentee"} Questionnaire
-          </h1>
-          <p className="text-purple-100">
-            {userData.category === "pre-health" ? "Pre-health" : "Graduate"} Program
-          </p>
-        </div>
-        <div className="bg-white/10 backdrop-blur-lg rounded-xl p-8 shadow-xl">
-          {getQuestionnaireForm()}
+    <div className="min-h-screen bg-white">
+      <div className="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <div className="space-y-8">
+          <div className="text-center">
+            <h1 className="text-3xl font-bold">
+              {userData.role === "mentor" ? "Mentor" : "Mentee"} Questionnaire - {" "}
+              {userData.category === "pre-health" ? "Pre-health" : "Graduate"}
+            </h1>
+            <p className="mt-2 text-muted-foreground">
+              Please complete all sections of the questionnaire
+            </p>
+          </div>
+          <div className="bg-white rounded-lg">
+            {getQuestionnaireForm()}
+          </div>
         </div>
       </div>
     </div>
