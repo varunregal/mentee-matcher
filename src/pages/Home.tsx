@@ -1,14 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { ArrowRight, Sparkles, Shield, Users, Zap } from "lucide-react";
+import { GraduationCap, Users, BookOpen, Network, Sparkles, HandShake, Star } from "lucide-react";
 import { motion } from "framer-motion";
 
 const Home = () => {
   return (
-    <div className="min-h-screen font-inter">
+    <div className="min-h-screen font-sans">
       {/* Hero Section */}
-      <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-indigo-50 to-violet-50" />
+      <section className="relative py-24 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-light/10 via-secondary-light/20 to-primary-light/10" />
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
@@ -18,117 +18,156 @@ const Home = () => {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <h1 className="text-5xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-violet-600 mb-6 leading-tight">
-              Shorten Links with
-              <br />Intelligence
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-secondary-dark leading-tight mb-6 max-w-4xl mx-auto">
+              The first student-led organization committed to working to shrink the socioeconomic gap in medical and graduate school
+              <span className="text-primary"> -- one application at a time</span>
             </h1>
-            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
-              Transform your long URLs into powerful, trackable short links. 
-              Perfect for social media, marketing campaigns, and analytics.
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12">
-              <Link to="/signup">
-                <Button size="lg" className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-700 hover:to-violet-700 text-white gap-2 h-12 px-8">
-                  Get Started <ArrowRight className="w-4 h-4" />
-                </Button>
-              </Link>
-              <Link to="/features">
-                <Button size="lg" variant="outline" className="w-full sm:w-auto h-12 px-8">
-                  Learn More
-                </Button>
-              </Link>
-            </div>
-            
-            <div className="flex justify-center items-center gap-8 text-gray-600 text-sm">
-              <div className="flex items-center gap-2">
-                <Shield className="w-4 h-4" /> Secure & Private
-              </div>
-              <div className="flex items-center gap-2">
-                <Zap className="w-4 h-4" /> Lightning Fast
-              </div>
-              <div className="flex items-center gap-2">
-                <Users className="w-4 h-4" /> 1M+ Users
-              </div>
-            </div>
+            <Link to="/services">
+              <Button size="lg" className="bg-primary hover:bg-primary-dark text-white gap-2 h-14 px-8 text-lg">
+                Our Services
+              </Button>
+            </Link>
           </motion.div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-20 bg-white">
+      {/* Statistics Section */}
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Why Choose Our Platform?</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Powerful features designed to help you grow and track your online presence.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              {
-                icon: Sparkles,
-                title: "Smart Analytics",
-                description: "Track clicks, geographic data, and user behavior with detailed analytics."
-              },
-              {
-                icon: Shield,
-                title: "Enterprise Security",
-                description: "Bank-level security with custom domains and branded links."
-              },
-              {
-                icon: Zap,
-                title: "Lightning Fast",
-                description: "Optimized infrastructure ensures your links load instantly, everywhere."
-              }
-            ].map((feature, index) => (
+              { number: "2100+", label: "Mentees", icon: Users },
+              { number: "1000+", label: "Mentors", icon: GraduationCap },
+              { number: "100s", label: "Students Admitted", icon: Star }
+            ].map((stat, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
-                className="relative group"
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="text-center p-8 rounded-2xl bg-secondary-light/30 backdrop-blur-sm"
               >
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-50 to-violet-50 transform transition-transform group-hover:scale-[1.02]" />
-                <div className="relative p-8 rounded-2xl">
-                  <feature.icon className="w-12 h-12 text-blue-600 mb-6" />
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3">{feature.title}</h3>
-                  <p className="text-gray-600">{feature.description}</p>
-                </div>
+                <stat.icon className="w-12 h-12 text-primary mx-auto mb-4" />
+                <h3 className="text-4xl font-bold text-secondary-dark mb-2">{stat.number}</h3>
+                <p className="text-lg text-gray-600">{stat.label}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-violet-600" />
-        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-10" />
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      {/* Services Section */}
+      <section className="py-20 bg-gradient-to-b from-white to-secondary-light/20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center"
+            className="text-center mb-16"
           >
-            <h2 className="text-3xl font-bold text-white mb-6">
-              Ready to Transform Your Links?
-            </h2>
-            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-              Join millions of users who trust our platform for their link management needs.
-            </p>
-            <Link to="/signup">
-              <Button size="lg" variant="secondary" className="h-12 px-8 gap-2 bg-white text-blue-600 hover:bg-gray-100">
-                Start for Free <ArrowRight className="w-4 h-4" />
-              </Button>
-            </Link>
+            <h2 className="text-3xl md:text-4xl font-bold text-secondary-dark mb-4">Our Services</h2>
+          </motion.div>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                icon: BookOpen,
+                title: "Personal Statement Review",
+                description: "Receive at least two rounds of detailed feedback on personal statements and other written application materials."
+              },
+              {
+                icon: HandShake,
+                title: "Practice Interviews",
+                description: "Prepare for interviews with your mentor and with others. We regularly host individual and group practice interviews."
+              },
+              {
+                icon: Network,
+                title: "Professional Networking",
+                description: "Join an international group of students and professionals committed to increasing diversity in STEM."
+              }
+            ].map((service, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="relative group p-8 rounded-2xl bg-white shadow-lg hover:shadow-xl transition-all duration-300"
+              >
+                <service.icon className="w-12 h-12 text-primary mb-6" />
+                <h3 className="text-xl font-semibold text-secondary-dark mb-4">{service.title}</h3>
+                <p className="text-gray-600 leading-relaxed">{service.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Value Proposition Sections */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              className="space-y-6"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold text-secondary-dark leading-tight">
+                100% free<br />100% of the time
+              </h2>
+              <p className="text-lg text-gray-600 leading-relaxed">
+                The cost of professional admissions advising is an enormous barrier for students pursing careers in STEM. Project SHORT strives to demystify this process by matching students one-on-one with graduate student mentors in their field -- all for free.
+              </p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              className="space-y-6"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold text-secondary-dark leading-tight">
+                Mentoring doesn't stop once you're accepted
+              </h2>
+              <p className="text-lg text-gray-600 leading-relaxed">
+                Project SHORT frequently hosts professional development webinars and other events, to facilitate networking, skill-building, and collaboration amongst our diverse team of medical and graduate students. Mentees are encouraged to get involved while applying and continue working and growing with us once accepted.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer CTA */}
+      <section className="py-20 bg-secondary-dark text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="space-y-8"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold">Apply to join us</h2>
+            <div className="flex justify-center gap-4">
+              <Link to="/signup">
+                <Button size="lg" className="bg-primary hover:bg-primary-dark text-white">
+                  Get Started
+                </Button>
+              </Link>
+            </div>
+            <div className="flex justify-center gap-6 pt-8">
+              {/* Social links - replace # with actual social media links */}
+              <a href="#" className="text-white/80 hover:text-white transition-colors">
+                <span className="sr-only">Twitter</span>
+                Twitter
+              </a>
+              <a href="#" className="text-white/80 hover:text-white transition-colors">
+                <span className="sr-only">LinkedIn</span>
+                LinkedIn
+              </a>
+              <a href="#" className="text-white/80 hover:text-white transition-colors">
+                <span className="sr-only">Instagram</span>
+                Instagram
+              </a>
+            </div>
           </motion.div>
         </div>
       </section>
